@@ -4,31 +4,6 @@ The Template Plugin is a starting point for new JUCE plugin projects that emphas
 
 ![](ignore/cover.svg)
 
-## Downloading the Template
-
-To download The Template Plugin, clone the repository from GitHub. Update submodules to get a copy of the JUCE library in the same folder.
-
-```sh
-git clone https://github.com/ncblair/NTHN_TEMPLATE_PLUGIN.git
-cd NTHN_TEMPLATE_PLUGIN
-git submodule update --recursive --init --remote
-```
-
-Alternatively, if you would like to set up your own git repository with the code from The Template Plugin, you can create a new repository from a template using the github CLI tool `gh`.
-
-```sh
-# If this is your first time using gh, install it and log in
-brew install gh
-gh auth login
-# create a (private) repository based on the template
-gh repo create my_new_juce_proj --template ncblair/NTHN_TEMPLATE_PLUGIN --private
-# clone the template repo locally
-gh repo clone my_new_juce_proj
-# update submodules to get JUCE code locally
-cd my_new_juce_proj
-git submodule update --recursive --init --remote
-```
-
 ## Compiling the Template
 
 First, open `CMakeLists.txt` in a text editor. Set your plugin name, version number, version string, company name, manufacturer id, and plugin id at the top of the file.

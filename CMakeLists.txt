@@ -1,13 +1,13 @@
 # Example Plugin CMAKE file
 # Nathan Blair May 2023 - modified from the example CMAKE file from JUCE
 
-set(ENV{PLUGIN_NAME} EXAMPLE)
+set(ENV{PLUGIN_NAME} ASpecialMysticJoy)
 set(ENV{VERSION_NUMBER} 0x000001) # 0xVVMMPP (VV = version, MM = modification, PP = patch)
 set(ENV{VERSION_STRING} 0.0.1) # VV.MM.PP
-set(ENV{COMPANY_NAME} YOUR_COMPANY_NAME)
-set(ENV{MANUFACTURER_ID} MFID) # A four-character manufacturer id with at least one upper-case character
-set(ENV{PLUGIN_CODE} Plid) # A unique four-character plugin id with exactly one upper-case character
-
+set(ENV{COMPANY_NAME} Rejoice)
+set(ENV{MANUFACTURER_ID} JCKL) # A four-character manufacturer id with at least one upper-case character
+set(ENV{PLUGIN_CODE} Asmj) # A unique four-character plugin id with exactly one upper-case character
+set(ENV{SUBMODULES_DIR} ${ROOT_DIR}/submodules)
 
 #--------------------------------------------------------------------------------
 # The first line of any CMake project should be a call to `cmake_minimum_required`, which checks
@@ -32,8 +32,7 @@ project($ENV{PLUGIN_NAME} VERSION $ENV{VERSION_STRING})
 # It is recommended to have a separate JUCE subdirectory for every project you create. 
 # This prevents issues that might arise from different versions of JUCE being used in different projects.
 #--------------------------------------------------------------------------------
-
-add_subdirectory(JUCE) # If you've put JUCE in a subdirectory
+add_subdirectory($ENV{SUBMODULES_DIR}/JUCE JUCE)
 
 #--------------------------------------------------------------------------------
 # If you are building a VST2 or AAX plugin, CMake needs to be told where to find these SDKs on your
