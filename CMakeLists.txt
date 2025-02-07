@@ -1,13 +1,14 @@
 # Example Plugin CMAKE file
 # Nathan Blair May 2023 - modified from the example CMAKE file from JUCE
 
-set(ENV{PLUGIN_NAME} ASpecialMysticJoy)
+set(ENV{PROJECT_NAME} ASpecialMysticJoy) # No spaces
+set(ENV{PLUGIN_NAME} "A Special Mystic Joy") # Can have spaces, final plugin name
 set(ENV{VERSION_NUMBER} 0x000001) # 0xVVMMPP (VV = version, MM = modification, PP = patch)
 set(ENV{VERSION_STRING} 0.0.1) # VV.MM.PP
 set(ENV{COMPANY_NAME} Rejoice)
-set(ENV{MANUFACTURER_ID} JCKL) # A four-character manufacturer id with at least one upper-case character
+set(ENV{MANUFACTURER_ID} Jckl) # A four-character manufacturer id with at least one upper-case character
 set(ENV{PLUGIN_CODE} Asmj) # A unique four-character plugin id with exactly one upper-case character
-set(ENV{SUBMODULES_DIR} ${ROOT_DIR}/submodules)
+set(ENV{SUBMODULES_DIR} ${CMAKE_SOURCE_DIR}/submodules)
 
 #--------------------------------------------------------------------------------
 # The first line of any CMake project should be a call to `cmake_minimum_required`, which checks
@@ -24,7 +25,7 @@ cmake_minimum_required(VERSION 3.15)
 # directories, and the current project version. This is a standard CMake command.
 #--------------------------------------------------------------------------------
 
-project($ENV{PLUGIN_NAME} VERSION $ENV{VERSION_STRING})
+project($ENV{PROJECT_NAME} VERSION $ENV{VERSION_STRING})
 
 
 #--------------------------------------------------------------------------------
@@ -51,7 +52,7 @@ add_subdirectory($ENV{SUBMODULES_DIR}/JUCE JUCE)
 # SEE: https://github.com/juce-framework/JUCE/blob/master/docs/CMake%20API.md
 #--------------------------------------------------------------------------------
 
-juce_add_plugin($ENV{PLUGIN_NAME}
+juce_add_plugin($ENV{PROJECT_NAME}
     # VERSION ...                               # Set this if the plugin version is different to the project version
     # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
     # ICON_SMALL ...
@@ -87,7 +88,7 @@ configure_file(src/plugin/ProjectInfo.cpp.in ${PROJECT_SOURCE_DIR}/src/plugin/Pr
 # Add source files (Only include .cpp files here, not headers)
 #--------------------------------------------------------------------------------
 
-target_sources($ENV{PLUGIN_NAME}
+target_sources($ENV{PROJECT_NAME}
     PRIVATE
         src/plugin/ProjectInfo.cpp
         src/plugin/PluginProcessorBase.cpp
@@ -100,7 +101,7 @@ target_sources($ENV{PLUGIN_NAME}
 
 #--------------------------------------------------------------------------------
 # I prefer to use c++ 17, but you can also use a different c++ version
-target_compile_features($ENV{PLUGIN_NAME} PRIVATE cxx_std_17) # -std=c++17
+target_compile_features($ENV{PROJECT_NAME} PRIVATE cxx_std_17) # -std=c++17
 #--------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------
@@ -108,7 +109,7 @@ target_compile_features($ENV{PLUGIN_NAME} PRIVATE cxx_std_17) # -std=c++17
 # SEE: https://github.com/juce-framework/JUCE/blob/master/docs/CMake%20API.md
 #--------------------------------------------------------------------------------
 
-target_compile_definitions($ENV{PLUGIN_NAME}
+target_compile_definitions($ENV{PROJECT_NAME}
     PUBLIC
         # JUCE_WEB_BROWSER and JUCE_USE_CURL would be on by default, but you might not need them.
         JUCE_WEB_BROWSER=0  # If you remove this, add `NEEDS_WEB_BROWSER TRUE` to the `juce_add_plugin` call
@@ -133,7 +134,7 @@ target_compile_definitions($ENV{PLUGIN_NAME}
 # Add JUCE modules / any external libraries here
 #--------------------------------------------------------------------------------
 
-target_link_libraries($ENV{PLUGIN_NAME}
+target_link_libraries($ENV{PROJECT_NAME}
     PRIVATE
         # AudioPluginData           # If we'd created a binary data target, we'd link to it here
         juce::juce_audio_utils
