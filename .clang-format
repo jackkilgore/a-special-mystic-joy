@@ -1,14 +1,13 @@
 ---
 BasedOnStyle: Google
-ColumnLimit: 80
+ColumnLimit: 100
 Language: Cpp
 Standard: "c++17"
-IndentWidth: 2
-AccessModifierOffset: -2
-TabWidth: 2
-ConstructorInitializerIndentWidth: 2
-ContinuationIndentWidth: 2
-BreakConstructorInitializers: AfterColon
+IndentWidth: 4
+AccessModifierOffset: -4
+TabWidth: 4
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
 UseTab: Never
 BreakBeforeBraces: Attach
 AlignEscapedNewlines: LeftWithLastLine
@@ -18,5 +17,7 @@ Cpp11BracedListStyle: true
 IndentPPDirectives: BeforeHash
 BinPackArguments: true
 BinPackParameters: true
-AlignAfterOpenBracket: AlwaysBreak
+AlignAfterOpenBracket: Align
 ReflowComments: false
+AllowShortEnumsOnASingleLine: false
+PackConstructorInitializers: NextLineOnly
